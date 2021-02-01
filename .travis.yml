@@ -4,3 +4,5 @@ services:
 
 before_install:
   - docker build -t zaferuz/Docker-React -f Dockerfile.dev .
+script:
+  - docker run zaferuz/Docker-React npm run test -- --coverage
