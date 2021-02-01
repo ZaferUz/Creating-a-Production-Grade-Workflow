@@ -2,7 +2,6 @@ services:
   - docker
 
 before_install:
-  - docker pull zaferuz/docker-react
   - docker build -t zaferuz/docker-react -f Dockerfile.dev .
 script:
   - docker run -e CI=true zaferuz/docker-react npm run test -- --coverage
@@ -10,7 +9,7 @@ deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
   app: "Docker"
-  env: "Docker-env"
+  env: "Docker-env-1"
   bucket_name: "elasticbeanstalk-us-east-1-244147688258"
   bucket_path: "Docker"
   on:
