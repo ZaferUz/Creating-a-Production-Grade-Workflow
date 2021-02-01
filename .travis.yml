@@ -5,7 +5,7 @@ services:
 before_install:
   - docker build -t zaferuz/docker-react -f Dockerfile.dev .
 script:
-  - docker run zaferuz/docker-react npm run test -- --coverage
+  - docker run -e CI=true zaferuz/docker-react npm run test -- --coverage
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
@@ -16,5 +16,4 @@ deploy:
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
